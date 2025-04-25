@@ -1,16 +1,22 @@
-const express=require("express")
+const express= require("express")
 const dbconnect = require("./db")
 const User=require("./user")
+const validate = require("./middleware")
 const app=express()
 app.use(express.json())
 //API
 //Get method
 app.get("/",async(req,res)=>{
-    let users=await User.find()
+    const {city}=req.query
+    let query={}
+    if(city){
+        query.city=city
+    }
+    let users=await User.find(query)
     res.send(users)
 });
 //post method
-app.post("/",async(req,res)=>{
+app.post("/",validate,async(req,res)=>{
     let user=await User.create(req.body)
     res.send(user)
 })
