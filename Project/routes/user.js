@@ -1,7 +1,7 @@
-const { router, Router } = require("express")
+const { Router } = require("express")
 const usercontroller = require("../controllers/user")
 
-const demorouter = Router()
-demorouter.get("/",usercontroller.get)
-demorouter.post("/",usercontroller.post)
-module.exports=demorouter
+const router = Router()
+router.get("/",usercontroller.get)
+router.post("/",usercontroller.post)
+module.exports=router
