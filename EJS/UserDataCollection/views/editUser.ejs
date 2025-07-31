@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <style>
+        h2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+        form{
+            width: 500px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Form For collect user Data !</h2>
+
+    <form method="POST" action="./updateUser">
+        <div>
+            <label for="">User Id :</label>
+            <input type="number" name="userid" id="" value="<%= editData.id %>">
+        </div>
+        <div>
+            <label for="">Name :</label>
+            <input type="text" name="name" id="" value="<%= editData.name %>">
+        </div>
+        <div>
+            <label for="">Email :</label>
+            <input type="email" name="email" id="" value="<%= editData.email %>">
+        </div>
+        <div>
+            <label for="">PassWord : </label>
+            <input type="password" name="password" id="" value="<%= editData.password %>">
+        </div>
+        <div>
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+</body>
+</html>
