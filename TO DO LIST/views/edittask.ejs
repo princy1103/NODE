@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT TASK</title>
+    <!-- CSS -->
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 500px;
+            margin: auto;
+        }
+
+        .inputfields {
+            width: 90%;
+            padding: 10px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 200px;
+            height: 50px;
+            background-color: cadetblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>EDIT A TASK !</h2>
+    <!-- Form For Add Task -->
+    <form method="POST" action="/edittask">
+        <div>
+            <label for="">TASK NO :</label>
+            <input type="number" name="editid" id="" class="inputfields" value="<%= editData.taskid %>">
+        </div>
+        <div>
+            <label for="">TASK NAME :</label>
+            <input type="text" name="name" id="" class="inputfields" value="<%= editData.name %>">
+        </div>
+        <div>
+            <label for="">DESCRIPTION :</label>
+            <input type="text" name="desc" id="" class="inputfields" value="<%= editData.desc %>">
+        </div>
+        <div>
+            <label for="">DATE : </label>
+            <input type="date" name="date" id="" class="inputfields" value="<%= editData.date %>">
+        </div>
+        <div>
+            <label for="">DURATION : </label>
+            <input type="time" name="time" id="" class="inputfields" value="<%= editData.time %>">
+        </div>
+        <div>
+            <label>EFFICIENT:</label><br>
+
+            <label>Low</label>
+            <input type="radio" name="efficient" value="Low" <%=editData.efficient==='Low' ? 'checked' : '' %>>
+
+            <label>Medium</label>
+            <input type="radio" name="efficient" value="Medium" <%=editData.efficient==='Medium' ? 'checked' : '' %>>
+
+            <label>High</label>
+            <input type="radio" name="efficient" value="High" <%=editData.efficient==='High' ? 'checked' : '' %>>
+        </div>
+
+        <div>
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+</body>
+
+</html>

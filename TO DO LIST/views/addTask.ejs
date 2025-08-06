@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD TASK</title>
+    <!-- CSS -->
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 500px;
+            margin: auto;
+        }
+
+        .inputfields {
+            width: 90%;
+            padding: 10px;
+        }
+        div{
+            margin-bottom: 10px;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            background-color: cadetblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>ADD A TASK !</h2>
+    <!-- Form For Add Task -->
+    <form method="POST" action="/insertTask">
+        <div>
+            <label for="">TASK NO :</label>
+            <input type="number" name="taskid" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">TASK NAME :</label>
+            <input type="text" name="name" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">DESCRIPTION :</label>
+            <input type="text" name="desc" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">DATE : </label>
+            <input type="date" name="date" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">DURATION : </label>
+            <input type="time" name="time" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="efficient">EFFICIENT : </label>
+            <label for="">Law</label>
+            <input type="radio" name="efficient" value="LOW">  
+            <label for="">Medium</label>        
+            <input type="radio" name="efficient" value="MEDIUM">  
+            <label for="">High</label>        
+            <input type="radio" name="efficient" value="HIGH">          
+        </div>
+        <div>
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+</body>
+
+</html>

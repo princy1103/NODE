@@ -6,14 +6,14 @@ const app = express()
 dotenv.config({
     path: './.env'
 })
-
+    
 app.use(express.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
 
 const port = process.env.PORT
 
-const UserData = []
+let UserData = []
 
 app.get('/', (req, res) => {
     return res.render('index')
@@ -46,25 +46,25 @@ app.post('/insertUser', (req, res) => {
     return res.redirect('/form')
 })
 
-// Edit user
-// app.post('/updateUser', (req, res) => {
-//     let id = req.body.userid
-//     let name = req.body.name
-//     let email = req.body.email
-//     let password = req.body.password
+//Edit user
+app.post('/updateUser', (req, res) => {
+    let id = req.body.userid
+    let name = req.body.name
+    let email = req.body.email
+    let password = req.body.password
 
-//     let userToUpdate = UserData.filter(user => user.id === id)[0]
+    let userToUpdate = UserData.filter(user => user.id === id)[0]
 
-//     if (userToUpdate) {
-//         userToUpdate.name = name
-//         userToUpdate.email = email
-//         userToUpdate.password = password
-//         console.log("Data Successfully Updated!!")
-//     } else {
-//         console.log("User not found")
-//     }
-//     return res.redirect('/form')
-// })
+    if (userToUpdate) {
+        userToUpdate.name = name
+        userToUpdate.email = email
+        userToUpdate.password = password
+        console.log("Data Successfully Updated!!")
+    } else {
+        console.log("User not found")
+    }
+    return res.redirect('/form')
+})
 
 app.get('/editUser', (req, res) => {
     let editId = req.query.id
@@ -73,10 +73,27 @@ app.get('/editUser', (req, res) => {
         return val.id === editId
     })
 
-    return res.render('editUser',{
-        editData:newEditdata[0]
+    return res.render('editUser', {
+        editData: newEditdata[0]
     })
 })
+
+
+app.get('/deleteData', (req, res) => {
+    let userDeleteId = req.query.id
+
+    console.log(userDeleteId);
+
+    let newDeleteData = UserData.filter((val) => {
+        return val.userid != userDeleteId
+    })
+
+    UserData = newDeleteData
+
+    return res.redirect('/form')
+})
+
+
 app.listen(port, (err) => {
     !err ?
         console.log(`Server start on ${port}`)

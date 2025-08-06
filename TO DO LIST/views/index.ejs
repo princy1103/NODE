@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <!-- CSS -->
+    <style>
+        h2 {
+            text-align: center;
+        }
+             table,
+        th,
+        td {
+            width: 900px;
+            margin: auto;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>YOUR TASK !</h2>
+    <table>
+        <tr>
+            <th>Task No : </th>
+            <th>Task Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>Efficient</th>
+
+        </tr>
+        <% { taskdata.map((data)=> { %>
+            <tr>
+                <td>
+                    <%= data.id %>
+                </td>
+                <td>
+                    <%= data.name %>
+                </td>
+                <td>
+                    <%= data.desc %>
+                </td>
+                <td>
+                    <%= data.date %>
+                </td>
+                 <td>
+                    <%= data.time %>
+                </td>
+                <td>
+                    <%= data.efficient %>
+                </td>
+                <td>
+                    <a href="/edittaskData?id=<%= data.id %>">
+                        <button type="button">Edit</button>
+                    </a>
+                    <a href="/deleteData?id=<%= data.id %>">
+                        <button type="button">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            <% })} %>
+    </table>
+</body>
+</html>
