@@ -6,75 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDIT TASK</title>
     <!-- CSS -->
-    <style>
-        h2 {
-            text-align: center;
-        }
+ <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #faf9f7;
+        margin: 0;
+        padding: 0;
+    }
+    h2 {
+        text-align: center;
+        margin: 20px 0;
+        color: #444;
+    }
+    form {
+        width: 500px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .inputfields, select {
+        width: 95%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+    }
+    div {
+        margin-bottom: 15px;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #8c7b75;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #756660;
+    }
+    label {
+        font-weight: 500;
+        color: #555;
+    }
+</style>
 
-        form {
-            width: 500px;
-            margin: auto;
-        }
-
-        .inputfields {
-            width: 90%;
-            padding: 10px;
-        }
-
-        div {
-            margin-bottom: 10px;
-        }
-
-        button {
-            width: 200px;
-            height: 50px;
-            background-color: cadetblue;
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
     <h2>EDIT A TASK !</h2>
     <!-- Form For Add Task -->
-    <form method="POST" action="/edittask">
-        <div>
-            <label for="">TASK NO :</label>
-            <input type="number" name="editid" id="" class="inputfields" value="<%= editData.taskid %>">
-        </div>
-        <div>
-            <label for="">TASK NAME :</label>
-            <input type="text" name="name" id="" class="inputfields" value="<%= editData.name %>">
-        </div>
-        <div>
-            <label for="">DESCRIPTION :</label>
-            <input type="text" name="desc" id="" class="inputfields" value="<%= editData.desc %>">
-        </div>
-        <div>
-            <label for="">DATE : </label>
-            <input type="date" name="date" id="" class="inputfields" value="<%= editData.date %>">
-        </div>
-        <div>
-            <label for="">DURATION : </label>
-            <input type="time" name="time" id="" class="inputfields" value="<%= editData.time %>">
-        </div>
-        <div>
-            <label>EFFICIENT:</label><br>
+  <form method="POST" action="/edittask">
+    <div>
+        <label for="">TASK NO :</label>
+        <input type="number" name="editid" class="inputfields" value="<%= editData.id %>">
+    </div>
 
-            <label>Low</label>
-            <input type="radio" name="efficient" value="Low" <%=editData.efficient==='Low' ? 'checked' : '' %>>
+    <div>
+        <label for="">TASK NAME :</label>
+        <input type="text" name="name" class="inputfields" value="<%= editData.name %>">
+    </div>
+    <div>
+        <label for="">DESCRIPTION :</label>
+        <input type="text" name="desc" class="inputfields" value="<%= editData.desc %>">
+    </div>
 
-            <label>Medium</label>
-            <input type="radio" name="efficient" value="Medium" <%=editData.efficient==='Medium' ? 'checked' : '' %>>
+    <div>
+        <label for="">DATE :</label>
+        <input type="date" name="date" class="inputfields" value="<%= editData.date %>">
+    </div>
+    <div>
+        <label for="">TIME :</label>
+        <input type="time" name="time" class="inputfields" value="<%= editData.time %>">
+    </div>
 
-            <label>High</label>
-            <input type="radio" name="efficient" value="High" <%=editData.efficient==='High' ? 'checked' : '' %>>
-        </div>
+    <div>
+        <label for="efficient">EFFICIENT:</label><br>
+        <select name="efficient" id="efficient">
+            <option value="Low" <%= editData.efficient === 'Low' ? 'selected' : '' %>>Low</option>
+            <option value="Medium" <%= editData.efficient === 'Medium' ? 'selected' : '' %>>Medium</option>
+            <option value="High" <%= editData.efficient === 'High' ? 'selected' : '' %>>High</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">SUBMIT</button>
+    </div>
+</form>
 
-        <div>
-            <button type="submit">SUBMIT</button>
-        </div>
-    </form>
 </body>
 
 </html>

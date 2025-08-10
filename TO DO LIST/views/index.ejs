@@ -7,15 +7,49 @@
     <title>TO DO LIST</title>
     <!-- CSS -->
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #faf9f7;
+            margin: 0;
+            padding: 0;
+        }
         h2 {
             text-align: center;
+            margin: 20px 0;
+            color: #444;
         }
-             table,
-        th,
-        td {
-            width: 900px;
+        table {
+            width: 90%;
             margin: auto;
-            border: 1px solid black;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #d6cfc4;
+            color: #333;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f5f3f0;
+        }
+        a button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #8c7b75;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        a button:hover {
+            background-color: #756660;
         }
     </style>
 </head>

@@ -75,6 +75,19 @@ app.post('/edittask', (req, res) => {
     return res.redirect('/');
 });
 
+// Delete task
+app.get('/deleteData', (req, res) => {
+    let TaskDeleteId = req.query.id
+
+    console.log(TaskDeleteId);
+
+    let newDeleteData = TaskData.filter((val) => {
+        return val.id != TaskDeleteId
+    })
+
+    TaskData = newDeleteData
+    return res.redirect('/')
+})
 app.listen(port,(err)=>{
     !err?
         console.log(`Server start on port ${port}`)
