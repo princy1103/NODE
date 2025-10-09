@@ -1,5 +1,5 @@
 import React from 'react'
-import { Chart } from "chart.js/auto";
+import { Chart } from 'chart.js/auto'
 import { useRef,useEffect } from 'react';
 const Dashboard = () => {
       const chartRef = useRef(null);
@@ -38,7 +38,7 @@ const Dashboard = () => {
       },
     });
 
-    // 🧹 Cleanup chart on unmount
+    //  Cleanup chart on unmount
     return () => {
       myChart.destroy();
     };

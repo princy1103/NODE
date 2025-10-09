@@ -1,4 +1,5 @@
-import React from 'react'
+import { NavLink  } from 'react-router-dom';
+
 
 const Header = () => {
     return (
@@ -24,11 +25,31 @@ const Header = () => {
                     placeholder="Search"
                     aria-label="Search"
                 />
-                <div className="navbar-nav">
+                <div className="navbar-nav d-flex flex-row">
                     <div className="nav-item text-nowrap">
-                        <a className="nav-link px-3" href="#">
-                            Sign out
-                        </a>
+                        <NavLink
+                            to="/login"
+                            className="nav-link px-3"
+                            style={({ isActive }) => ({
+                                color: isActive ? "Cadetblue" : "white",
+                                textDecoration: "none",
+                            })}
+                        >
+                            Login
+                        </NavLink>
+                    </div>
+
+                    <div className="nav-item text-nowrap">
+                        <NavLink
+                            to="/register"
+                            className="nav-link px-3"
+                            style={({ isActive }) => ({
+                                color: isActive ? "Cadetblue" : "white",
+                                textDecoration: "none",
+                            })}
+                        >
+                            Register
+                        </NavLink>
                     </div>
                 </div>
             </header>

@@ -14,7 +14,7 @@ export const register = async(req , res) => {
     user = new User({email , password ,name});
     await user.save()
     const token = jwtUtile.TokenSign({id:user._id})
-    res.cookie('token' , token , {httpOnly:true , secure:true}).json({
+    res.cookie('token' , token , {httpOnly:true , secure:false}).json({
       success:true,
       user:{id:user._id , email:user.email , password:user.password}
     })
@@ -29,7 +29,7 @@ export const login =  async(req , res , next) => {
     if(err) return next(err)
     if(!user) return res.status(401).json(info)
     const token = jwtUtile.TokenSign({id:user._id})
-    res.cookie('token' , token , {httpOnly:true  ,  secure:true}).json({
+    res.cookie('token' , token , {httpOnly:true  ,  secure:false}).json({
       success:true,
       user:{id:user._id , email:user.email , password:user.password},
       token
