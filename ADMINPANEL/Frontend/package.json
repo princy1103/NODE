@@ -5,7 +5,7 @@
   "type": "module",
    "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd ../backend && nodemon server.js",
+    "server": "cd ../Backend && nodemon server.js",
     "client": "vite"
   },
   "dependencies": {
