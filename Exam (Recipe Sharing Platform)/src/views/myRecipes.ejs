@@ -1,0 +1,18 @@
+<%- include('layout', { 
+  title: 'My Recipes - Recipe Sharing Platform',
+  body: `
+  <h2>My Recipes</h2>
+
+  ${recipes.length ? "" : "<p>You have not created any recipes yet.</p>"}
+
+  ${recipes.map(r => `
+    <div class="card">
+      <h3>${r.title}</h3>
+      <p>${r.description}</p>
+
+      <a href="/recipes/${r._id}" class="btn">View</a>
+      <a href="/recipes/edit/${r._id}" class="btn">Edit</a>
+      <a href="/recipes/delete/${r._id}" class="btn" style="background:red;">Delete</a>
+    </div>
+  `).join("")}
+`}) %>

@@ -1,0 +1,29 @@
+<%- include('layout', { 
+  title: 'Edit Recipe - Recipe Sharing Platform',
+  body: `
+  <h2>Edit Recipe</h2>
+
+  <form action="/recipes/edit/${recipe._id}" method="POST">
+    <div class="card">
+      <label>Title</label>
+      <input type="text" name="title" value="${recipe.title}" required>
+
+      <label>Description</label>
+      <textarea name="description">${recipe.description}</textarea>
+
+      <label>Ingredients</label>
+      <input type="text" name="ingredients" value="${recipe.ingredients.join(",")}" >
+
+      <label>Steps</label>
+      <textarea name="steps">${recipe.steps.join(".")}</textarea>
+
+      <label>Tags</label>
+      <input type="text" name="tags" value="${recipe.tags.join(",")}">
+
+      <label>Cuisine</label>
+      <input type="text" name="cuisine" value="${recipe.cuisine}">
+
+      <button class="btn">Save Changes</button>
+    </div>
+  </form>
+`}) %>

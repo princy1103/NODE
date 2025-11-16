@@ -1,0 +1,18 @@
+<% 
+var bodyContent = '<h2>Login</h2>' +
+  '<form action="/auth/login" method="POST">' +
+  '<div class="card">' +
+  '<label>Email</label>' +
+  '<input type="email" name="email" required>' +
+  '<label>Password</label>' +
+  '<input type="password" name="password" required>' +
+  '<button type="submit" class="btn">Login</button>';
+if (typeof error !== 'undefined' && error) {
+  bodyContent += '<div class="error">' + error + '</div>';
+}
+bodyContent += '</div></form>';
+%>
+<%- include('layout', { 
+  title: 'Login - Recipe Sharing Platform',
+  body: bodyContent
+}) %>

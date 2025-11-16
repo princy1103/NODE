@@ -1,0 +1,29 @@
+<%- include('layout', { 
+  title: 'Add New Recipe - Recipe Sharing Platform',
+  body: `
+  <h2>Add New Recipe</h2>
+
+  <form action="/recipes/add" method="POST">
+    <div class="card">
+      <label>Title</label>
+      <input type="text" name="title" required>
+
+      <label>Description</label>
+      <textarea name="description"></textarea>
+
+      <label>Ingredients (comma-separated)</label>
+      <input type="text" name="ingredients">
+
+      <label>Steps (separated by periods)</label>
+      <textarea name="steps"></textarea>
+
+      <label>Tags (comma-separated)</label>
+      <input type="text" name="tags">
+
+      <label>Cuisine</label>
+      <input type="text" name="cuisine">
+
+      <button type="submit" class="btn">Submit</button>
+    </div>
+  </form>
+`}) %>

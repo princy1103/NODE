@@ -1,0 +1,13 @@
+<nav>
+  <a href="/">🍽️ RecipeShare</a>
+  <a href="/recipes">All Recipes</a>
+
+  <% if (user) { %>
+    <a href="/recipes/my-recipes">My Recipes</a>
+    <a href="/recipes/add" class="btn">+ Add Recipe</a>
+    <a href="/auth/logout">Logout (<%= user.username %>)</a>
+  <% } else { %>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/register">Register</a>
+  <% } %>
+</nav>

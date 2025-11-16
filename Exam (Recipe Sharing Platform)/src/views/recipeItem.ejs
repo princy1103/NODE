@@ -1,0 +1,71 @@
+<% 
+// Build title
+var pageTitle = recipe.title ? recipe.title + ' - Recipe Sharing Platform' : 'Recipe - Recipe Sharing Platform';
+
+// Build body content
+var bodyContent = '<h2>' + (recipe.title || '') + '</h2>' +
+  '<div class="card">' +
+  '<p>' + (recipe.description || '') + '</p>' +
+  '<p><b>Cuisine:</b> ' + (recipe.cuisine || '') + '</p>' +
+  '<p><b>By:</b> ' + (recipe.author ? recipe.author.username : 'Unknown') + '</p>' +
+  '<h3>Ingredients:</h3>' +
+  '<ul>';
+
+// Add ingredients
+if (recipe.ingredients && recipe.ingredients.length > 0) {
+  recipe.ingredients.forEach(function(ingredient) {
+    bodyContent += '<li>' + ingredient + '</li>';
+  });
+}
+bodyContent += '</ul>' +
+  '<h3>Steps:</h3>' +
+  '<ol>';
+
+// Add steps
+if (recipe.steps && recipe.steps.length > 0) {
+  recipe.steps.forEach(function(step) {
+    bodyContent += '<li>' + step + '</li>';
+  });
+}
+bodyContent += '</ol>';
+
+// Add edit/delete buttons if user is owner or admin
+if (user && recipe.author && (user.id === recipe.author._id.toString() || user.role === "admin")) {
+  bodyContent += '<a href="/recipes/edit/' + recipe._id + '" class="btn">Edit</a>' +
+    '<a href="/recipes/delete/' + recipe._id + '" class="btn" style="background:red;">Delete</a>';
+}
+
+bodyContent += '</div>' +
+  '<h3>Comments</h3>' +
+  '<div class="card">';
+
+// Add comments
+if (recipe.comments && recipe.comments.length > 0) {
+  recipe.comments.forEach(function(comment) {
+    var commentAuthor = comment.author ? comment.author.username : 'Anonymous';
+    bodyContent += '<p><b>' + commentAuthor + ':</b> ' + comment.text + '</p>';
+    if (user && comment.author && (user.id === comment.author._id.toString() || user.role === "admin")) {
+      bodyContent += '<a href="/comments/' + recipe._id + '/delete/' + comment._id + '" class="btn" style="background:red;">Delete</a>';
+    }
+    bodyContent += '<hr>';
+  });
+} else {
+  bodyContent += '<p>No comments yet.</p>';
+}
+
+// Add comment form
+if (user) {
+  bodyContent += '<form action="/comments/' + recipe._id + '/add" method="POST">' +
+    '<input type="text" name="text" placeholder="Write a comment..." required>' +
+    '<button class="btn">Post</button>' +
+    '</form>';
+} else {
+  bodyContent += '<p><a href="/auth/login">Login</a> to comment</p>';
+}
+
+bodyContent += '</div>';
+%>
+<%- include('layout', { 
+  title: pageTitle,
+  body: bodyContent
+}) %>
